@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS viral_db;
+CREATE DATABASE viral_db;

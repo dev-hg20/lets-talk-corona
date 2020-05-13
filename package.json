@@ -1,0 +1,36 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "A microblogging platform where people come together to share stories about the coronavirus pandemic.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-hg20/project-2.git"
+  },
+  "contributors": [
+    {
+      "name": "dev-hg20"
+    },
+    {
+      "name": "gveetil"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-hg20/project-2/issues"
+  },
+  "homepage": "https://github.com/dev-hg20/project-2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.21.8"
+  }
+}
