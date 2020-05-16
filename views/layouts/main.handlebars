@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Materialize - Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Main Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/corona-favicon.png" type="image/x-icon">
+    <title>Lets Talk Corona!</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper blue-grey darken-1 ">
+            <a href="/" class="brand-logo">
+                <i class="small material-icons hide-on-med-and-down">insert_comment</i>
+                <span>Lets Talk Corona! </span>
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                {{#unless isLoggedIn}}
+                <li><a href="/login">Login</a></li>
+                {{/unless}}
+                {{#if isLoggedIn}}
+                <li><a href="/">Profile</a></li>
+                <li><a href="/">Logout</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        {{#unless isLoggedIn}}
+        <li><a href="/login">Login</a></li>
+        {{/unless}}
+        {{#if isLoggedIn}}
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Logout</a></li>
+        {{/if}}
+    </ul>
+
+    <main>
+        <div class="row">
+            {{{ body }}}
+        </div>
+    </main>
+    <footer class="page-footer blue-grey darken-3 p">
+        <div class="footer-copyright">
+            <div class="container center-align white-text">
+                © 2020 Lets Talk Corona!
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content">
+            <h5>Lets Talk Corona!</h5>
+            <p id="modal-message"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    <!-- Link to JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Link to javascript files -->
+    <script src="/assets/js/homepage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
