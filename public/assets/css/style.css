@@ -1,0 +1,54 @@
+@import "login.css";
+
+body
+{
+    /* default background color if image is unavailable */
+    background-color:ghostwhite;
+    /* default font */
+    font-family: Mada, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* Styling for sticky footer */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* Styling for sticky footer */
+  }
+
+main {
+  /* Styling for sticky footer */
+  flex: 1 0 auto;
+  /* Styling for sticky footer */
+}
+
+.full-height{
+  height: 80vh;
+}
+
+.brand-logo i{
+  margin-left: 1rem;
+}
+
+.page-content{
+  padding-top: 2rem;
+}
+
+.page-footer{
+  padding: 0px;
+}
+
+.ltc-heading{
+  color: slategrey;
+}
+
+.rounded{
+  border-radius: 16px;
+}
+
+.ltc-btn-primary{
+  background-color: slategrey;
+}
+
+@media (max-width: 992px) {
+  .full-height{
+    height: unset;
+  }
+}

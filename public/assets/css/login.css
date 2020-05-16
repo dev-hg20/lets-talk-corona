@@ -1,0 +1,29 @@
+
+.login-panel,.signup-panel {
+  padding-bottom: 1rem;
+  width: 100%;
+}
+  
+form.login, form.signup{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+form.login div.col,
+form.signup div.col{
+  margin: 1px;
+}
+
+form.login .btn,
+form.signup .btn{
+  min-width: 15rem;
+}
+
+form.login p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+form.login a.btn{
+  border: 1px solid rgb(135, 171, 250);
+}
