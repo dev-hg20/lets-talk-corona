@@ -1,10 +1,14 @@
 language: node_js
-node_js: "12"
+node_js:
+- stable
 branches:
   only:
-    - master
+  - master
 cache:
   directories:
-    - node_modules
-before_install:
-  - mysql -e 'CREATE DATABASE testdb;'
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: TCQloAMLy/jMImWAXo7cfLa+V0URqXlAYZT2t+QsNEKCARl3tY7UZ33P7qf41GY2mv2tHGEwt95Dz9fgloX7Dxyo3X+h7vB3uQ+z3V8wjC6Wc8SKFC1dafka/gedP+pRxKBQ76fBsFsXTd2GIvOki+NuWdYurOOHvqKM3phNXk1NTnGQv7MFSeTuBScF8ZfTAzdEF/FtXJslyMxzjtLw4RW1q3552aaPPv5UzSB2Hzr8AMnAiVxb1olof5qbR9+hH0RSXwJDwrBPQba6znDWQcbOeHbNrcO6rtFXAU10c26T1x1S5v9+Sdus4PZNIwk/F6Gp0lvmJYvTkXqb+9AP9EaYLJj+kftVt+5MeXd+bB1Yx6AJC0/kf+UEORvUHndpN0o1YoV3x3Tp97IANQeuAIDjPzcwuaTYoyJGJSch7XqijD4+SrbwcWt9SgZZBN6Pv6zJU5KRjlymQYgrKQJhZo9ipYN0nes/JMCfwekK7hBlQ4cxaM8G6QXGMjrlqsp2uq9QMP5hlMDVvlN7cIB9GuFb4o9t6B0wTQy0+dgpQbEGPzOk6sNmkvLxiZ8LJ4fuMGLPdGQ79BwcMk0ok6gkodxRv5TYMyM73vrYo3z3IHEznrRDKvcygQbvNQfbHW8z2+GtDkCYATPNb3Mux1jvX/c0r+YzMSp8vQOL7lFtne4=
+  app: lets-talk-corona

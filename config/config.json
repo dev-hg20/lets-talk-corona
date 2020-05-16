@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Lemonade123!",
+    "password": "Lhttps://github.com/dev-hg20/lets-talk-corona/pull/8/conflict?name=config%252Fconfig.json&ancestor_oid=e21761783acd763f270673e83b0364333754d46c&base_oid=47ac7e076eb237f77143bf163dc373f8a3155121&head_oid=bf721ef383cfc73ce7b4aab3045c2efc1a8941d2emonade123!",
     "database": "viral_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -16,6 +16,12 @@
     "operatorsAliases": false
   },
   "production": {
+
+    "username": "poc35op7ku5vlrfn",
+    "password": "fgmprrivi3u7a6le",
+    "database": "pjt37ycwaksp8sb2",
+    "host": "onnjomlc4vqc55fw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+
     "username": "root",
     "password": "Lemonade123!",
     "database": "corona_production",
