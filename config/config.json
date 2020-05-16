@@ -16,10 +16,10 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "corona_production",
-    "host": "127.0.0.1",
+    "username": "poc35op7ku5vlrfn",
+    "password": "fgmprrivi3u7a6le",
+    "database": "pjt37ycwaksp8sb2",
+    "host": "onnjomlc4vqc55fw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": false
   }
