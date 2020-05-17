@@ -1,5 +1,6 @@
 
 .login-panel,.signup-panel {
+  margin-top: 8%;
   padding-bottom: 1rem;
   width: 100%;
 }
@@ -16,14 +17,6 @@ form.signup div.col{
 
 form.login .btn,
 form.signup .btn{
-  min-width: 15rem;
-}
-
-form.login p{
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-form.login a.btn{
-  border: 1px solid rgb(135, 171, 250);
+  padding-left: 3rem;
+  padding-right: 3rem;
 }

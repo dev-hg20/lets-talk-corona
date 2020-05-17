@@ -13,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <link rel="icon" href="/assets/images/corona-favicon.png" type="image/x-icon">
     <title>Lets Talk Corona!</title>
+    <!-- Link to JQuery and materialize libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Link to javascript files -->
+    <script src="/assets/js/utils.js"></script>
 </head>
 
 <body>
@@ -22,30 +27,17 @@
                 <i class="small material-icons hide-on-med-and-down">insert_comment</i>
                 <span>Lets Talk Corona! </span>
             </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <a href="#" data-target="small-screen-only-menu" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                {{#unless isLoggedIn}}
-                <li><a href="/login">Login</a></li>
-                {{/unless}}
-                {{#if isLoggedIn}}
-                <li><a href="/">Profile</a></li>
-                <li><a href="/">Logout</a></li>
-                {{/if}}
+                {{> main-nav-bar-menu}}
             </ul>
         </div>
     </nav>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="/">Home</a></li>
-        {{#unless isLoggedIn}}
-        <li><a href="/login">Login</a></li>
-        {{/unless}}
-        {{#if isLoggedIn}}
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Logout</a></li>
-        {{/if}}
+    <!-- repeat top menu as a side menu to be displayed only on small screens / in mobile mode-->
+    <ul class="sidenav" id="small-screen-only-menu">
+        {{> main-nav-bar-menu}}
     </ul>
 
     <main>
@@ -64,19 +56,15 @@
     <!-- Modal Structure -->
     <div id="search-modal" class="modal">
         <div class="modal-content">
-            <h5>Lets Talk Corona!</h5>
+            <h6 class="modal-header"></h6>
+            <div class="divider"></div>
             <p id="modal-message"></p>
+            <hl></hl>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            <a href="#!" class="modal-close waves-effect waves-teal btn-flat">Close</a>
         </div>
     </div>
-    <!-- Link to JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!-- Link to javascript files -->
-    <script src="/assets/js/homepage.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

@@ -19,12 +19,12 @@ main {
   /* Styling for sticky footer */
 }
 
-.full-height{
-  height: 80vh;
-}
-
 .brand-logo i{
   margin-left: 1rem;
+}
+
+.brand-logo span{
+font-size: 1.3rem;
 }
 
 .page-content{
@@ -43,12 +43,16 @@ main {
   border-radius: 16px;
 }
 
-.ltc-btn-primary{
-  background-color: slategrey;
+.footer-copyright{
+  font-size:smaller;
 }
 
-@media (max-width: 992px) {
-  .full-height{
-    height: unset;
-  }
+.avatar-img{
+  max-width: 8rem;
+  max-height: 8rem;
+  margin: 1rem;
+}
+
+.ltc-btn-primary{
+  background-color: slategrey;
 }

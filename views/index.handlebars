@@ -1,7 +1,17 @@
 <div class="col s12 l3">
     <!-- Left Navigation Panel -->
-    <div class="card-panel full-height">
+    <div class="card-panel">
         <div class="collection">
+            {{#if currentUser}}
+            <div class="collection-item center-align">
+                <img src="/assets/images/user_avatar.png" alt="user avatar" class="circle responsive-img avatar-img">
+                <div class="title">{{currentUser.name}}</div>
+                {{!-- <a class="btn-floating btn-large waves-effect waves-light red right"><i
+                        class="material-icons">edit</i></a> --}}
+                {{!-- <a href="#!" class="secondary-content"><i class="material-icons ">edit</i></a> --}}
+            </div>
+            {{/if}}
+            <a class="collection-item waves-effect waves-light" href="#" data-id="all">All Stories</a>
             {{#each category}}
             {{> left-menu-item}}
             {{/each}}
@@ -26,3 +36,5 @@
     </div>
     <!-- Content Panel -->
 </div>
+<!-- Link to javascript files used by this module -->
+<script src="/assets/js/homepage.js"></script>
