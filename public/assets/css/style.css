@@ -1,4 +1,5 @@
 @import "login.css";
+@import "story.css";
 
 body
 {
@@ -33,6 +34,10 @@ font-size: 1.3rem;
 
 .page-footer{
   padding: 0px;
+}
+
+.main-body{
+  padding: 1rem;
 }
 
 .ltc-heading{

@@ -3,12 +3,9 @@
     <div class="card-panel">
         <div class="collection">
             {{#if currentUser}}
-            <div class="collection-item center-align">
+            <div class="collection-item center-align current-user" data-userid="{{currentUser.id}}">
                 <img src="/assets/images/user_avatar.png" alt="user avatar" class="circle responsive-img avatar-img">
                 <div class="title">{{currentUser.name}}</div>
-                {{!-- <a class="btn-floating btn-large waves-effect waves-light red right"><i
-                        class="material-icons">edit</i></a> --}}
-                {{!-- <a href="#!" class="secondary-content"><i class="material-icons ">edit</i></a> --}}
             </div>
             {{/if}}
             <a class="collection-item waves-effect waves-light" href="#" data-id="all">All Stories</a>
@@ -20,21 +17,57 @@
     <!-- Left Navigation Panel -->
 </div>
 <div class="col s12 l9">
-    <!-- Content Panel -->
-    <div class="card-panel">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lorem dolor, eleifend ut ultrices nec, elementum ac
-        lorem.
-        Aenean arcu metus, finibus id tellus nec, consequat commodo ipsum. Suspendisse dapibus interdum vulputate. Sed
-        sodales,
-        massa at aliquet posuere, orci nisi feugiat purus, finibus tempus orci tellus sed sapien. Maecenas sapien urna,
-        blandit
-        non mollis at, ultrices non magna. Vestibulum lobortis metus ac leo facilisis egestas. Vivamus neque erat,
-        finibus et
-        ligula sit amet, aliquet ornare lorem. Donec non sem erat. Sed eleifend tincidunt libero, tempor gravida ligula
-        commodo
-        id.
+    <ul class="collapsible">
+        <li>
+            {{#unless currentUser}}
+            <!-- user login message -->
+            <a class="collapsible-header teal-text" href="/login">
+                <i class="material-icons teal-text">double_arrow</i>Please sign in to add a new
+                story !
+            </a>
+            {{/unless}}
+            {{#if currentUser}}
+            <!-- New Story Panel -->
+            <div class="collapsible-header teal-text">
+                <i class="material-icons">add</i>Add a new story ...
+            </div>
+            <div class="collapsible-body new-story-collapsible">
+                <form class="new-story">
+                    <div class="row">
+                        <div class="input-field col s8 inline">
+                            {{!-- <i class="material-icons prefix">subject</i> --}}
+                            <input id="new-story-title" type="text">
+                            <label for="new-story-title">Title</label>
+                        </div>
+                        <div class="input-field col s4 inline">
+                            <select id="new-story-category">
+                                {{#each category}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <label for="new-story-category">Post under</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="new-story-body" rows="2" class="materialize-textarea"></textarea>
+                            <label for="new-story-body">Story</label>
+                        </div>
+                        <div class="input-field col s12 right-align">
+                            <a for="new-story-body" class="btn-floating waves-effect waves-light teal btn-post"><i
+                                    class="material-icons">post_add</i></a>
+                            <a for="new-story-body" class="btn-floating waves-effect waves-light red btn-clear"><i
+                                    class="material-icons">clear</i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- New Story Panel -->
+            {{/if}}
+        </li>
+    </ul>
+    <!-- Story list -->
+    <div class="user-stories">
     </div>
-    <!-- Content Panel -->
+    <!-- Story list -->
 </div>
 <!-- Link to javascript files used by this module -->
 <script src="/assets/js/homepage.js"></script>
