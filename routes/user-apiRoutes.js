@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
 const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 //post for user route, post stories, create story, update story, delete story
 
@@ -42,7 +43,7 @@ router.get("/api/user_data", function (req, res) {
 });
 
 //GET stories for the current user
-router.get("/api/user/stories", function (req, res) {
+router.get("/api/user/stories", isAuthenticated, function (req, res) {
   db.Story.findAll({
     where: {
       UserId: req.params.id,

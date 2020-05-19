@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const db = require("../models");
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 //GET all the stories
 router.get("/api/stories", function (req, res) {
