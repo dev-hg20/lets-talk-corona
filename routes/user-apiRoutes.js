@@ -32,14 +32,24 @@ router.get("/logout", function (req, res) {
 
 // GET data about user
 router.get("/api/user_data", function (req, res) {
-  if (!req.user) {
-    res.json({});
-  } else {
+  if (req.user) {
     res.json({
       name: req.user.name,
       id: req.user.id,
     });
   }
+  res.json({});
+});
+
+//GET stories for the current user
+router.get("/api/user/stories", function (req, res) {
+  db.Story.findAll({
+    where: {
+      UserId: req.params.id,
+    },
+  }).then(function (dbStory) {
+    res.json(dbStory);
+  });
 });
 
 module.exports = router;
