@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 //GET all the stories
 router.get("/api/stories", function (req, res) {
@@ -25,14 +26,14 @@ router.get("/api/stories/category", function (req, res) {
 });
 
 //POST for saving a new post
-router.post("/api/stories", function (req, res) {
+router.post("/api/stories", isAuthenticated, function (req, res) {
   db.Story.create(req.body).then(function (dbStory) {
     res.json(dbStory);
   });
 });
 
 //PUT for updating posts
-router.put("/api/stories/", function (req, res) {
+router.put("/api/stories/", isAuthenticated, function (req, res) {
   db.Story.update(req.body, {
     where: {
       id: req.body.id,
@@ -43,7 +44,7 @@ router.put("/api/stories/", function (req, res) {
 });
 
 //DELETE posts
-router.delete("/api/stories/:id", function (req, res) {
+router.delete("/api/stories/:id", isAuthenticated, function (req, res) {
   db.Story.destroy({
     where: {
       id: req.params.id,
