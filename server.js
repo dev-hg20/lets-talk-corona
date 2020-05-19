@@ -5,6 +5,7 @@ const passport = require("./config/passport");
 const db = require("./models");
 const htmlRoutes = require("./routes/htmlRoutes");
 const apiUserRoutes = require("./routes/user-apiRoutes");
+const apiStoriesRoutes = require("./routes/story-apiRoutes");
 
 // Set up port to work with Heroku as well
 var PORT = process.env.PORT || 5050;
@@ -16,7 +17,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Configure express to use sessions and passport middleware for authentication
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -27,6 +30,7 @@ app.set("view engine", "handlebars");
 // Configure routes
 app.use(apiUserRoutes);
 app.use(htmlRoutes);
+app.use(apiStoriesRoutes);
 
 // Sync the database and log a message upon success
 db.sequelize.sync({}).then(function () {
