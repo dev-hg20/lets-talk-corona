@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Lemonade123!",
+    "password": null,
     "database": "viral_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Lemonade123!",
+    "password": null,
     "database": "corona_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
