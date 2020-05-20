@@ -21,7 +21,12 @@ router.post("/api/signup", function (req, res) {
       res.redirect(307, "/api/login");
     })
     .catch(function (err) {
-      res.status(401).json(err);
+      // res.status(401).json(err);
+      res
+        .status(401)
+        .json(
+          "Please use letters and numbers only when creating your username."
+        );
     });
 });
 
