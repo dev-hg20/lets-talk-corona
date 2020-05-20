@@ -43,14 +43,18 @@ router.get("/logout", function (req, res) {
 // });
 
 //GET stories for the current user
-router.get("/user/stories", isAuthenticated, function (req, res) {
-  db.Story.findAll({
-    where: {
-      UserId: req.params.id,
-    },
-  }).then(function (dbStory) {
+router.get("/user/stories", isAuthenticated, async function (req, res) {
+  try {
+    const dbStory = await db.Story.findAll({
+      where: {
+        UserId: req.params.id,
+      },
+      order: [["updatedAt", "DESC"]],
+    });
     res.json(dbStory);
-  });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
 });
 
 module.exports = router;
