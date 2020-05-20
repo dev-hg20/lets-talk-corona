@@ -7,6 +7,7 @@ router.get("/", async function (req, res) {
   const query = {};
   const dbStory = await db.Story.findAll({
     where: query,
+    order: [["modifiedAt", "DESC"]],
     include: [db.User],
   });
   res.json(dbStory);
