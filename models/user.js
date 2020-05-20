@@ -8,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        is: /^[a-zA-Z0-9]*$/i,
+      },
     },
     // The password cannot be null
     password: {
