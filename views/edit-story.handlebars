@@ -1,0 +1,39 @@
+{{> left-menu-item}}
+<div class="col s12 l9">
+    <div class="card">
+        <div class="card-content">
+            <form class="edit-story">
+                <div class="row">
+                    <div class="input-field col s12 m8 inline">
+                        <input id="edit-story-title" type="text" value="{{story.title}}">
+                        <label for="edit-story-title">Title</label>
+                    </div>
+                    <div class="input-field col s12 m4 inline">
+                        <select id="edit-story-category" data-selected="{{story.CategoryId}}">
+                            {{#each category}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <label for="edit-story-category" class=" hide-on-small-only">Post under</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="edit-story-body" rows="2" class="materialize-textarea">{{story.body}}</textarea>
+                        <label for="edit-story-body">Story</label>
+                    </div>
+                    <div class="input-field col s12 right-align">
+                        <button for="edit-story-body" class="btn-small waves-effect waves-light btn-save rounded"
+                            type="submit" name="action" data-story-id="{{story.id}}"><i
+                                class="material-icons left hide-on-small-only">save</i>&nbsp;Save&nbsp;
+                        </button>
+                        <a for="edit-story-body" class="btn-small waves-effect waves-light btn-cancel blue-grey rounded"
+                            type="cancel" href="/" name="action"><i
+                                class="material-icons left hide-on-small-only">cancel</i>Cancel
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Link to javascript files used by this module -->
+<script src="/assets/js/edit-story.js"></script>
