@@ -32,8 +32,19 @@ function handleError(error) {
     showMessage(errorMessage, "Error!");
 }
 
+/**
+ * Diaplays the given message in a status panel
+ * @param {string} message the message to be displayed
+ */
+// eslint-disable-next-line no-unused-vars
+function displayStatus(message) {
+    M.Toast.dismissAll();
+    M.toast({ html: message, classes: 'rounded blue-grey' });
+}
+
 // Wait for document to be loaded before initilizing the modal dialog
 $(document).ready(function () {
     // Initialize UI Elements
     $(".modal").modal();
+    $('.sidenav').sidenav();
 });

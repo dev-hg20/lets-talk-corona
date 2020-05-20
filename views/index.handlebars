@@ -1,21 +1,4 @@
-<div class="col s12 l3">
-    <!-- Left Navigation Panel -->
-    <div class="card-panel">
-        <div class="collection">
-            {{#if currentUser}}
-            <div class="collection-item center-align current-user" data-userid="{{currentUser.id}}">
-                <img src="/assets/images/user_avatar.png" alt="user avatar" class="circle responsive-img avatar-img">
-                <div class="title">{{currentUser.name}}</div>
-            </div>
-            {{/if}}
-            <a class="collection-item waves-effect waves-light" href="#" data-id="all">All Stories</a>
-            {{#each category}}
-            {{> left-menu-item}}
-            {{/each}}
-        </div>
-    </div>
-    <!-- Left Navigation Panel -->
-</div>
+{{> left-menu-item}}
 <div class="col s12 l9">
     <ul class="collapsible">
         <li>
@@ -29,23 +12,24 @@
             {{#if currentUser}}
             <!-- New Story Panel -->
             <div class="collapsible-header teal-text">
-                <i class="material-icons">add</i>Add a new story ...
+                <i class="material-icons icon-open-add-story">add</i>
+                <i class="material-icons icon-close-add-story">remove</i>
+                Add a new story ...
             </div>
             <div class="collapsible-body new-story-collapsible">
                 <form class="new-story">
                     <div class="row">
-                        <div class="input-field col s8 inline">
-                            {{!-- <i class="material-icons prefix">subject</i> --}}
+                        <div class="input-field col s12 m8 inline">
                             <input id="new-story-title" type="text">
                             <label for="new-story-title">Title</label>
                         </div>
-                        <div class="input-field col s4 inline">
+                        <div class="input-field col s12 m4 inline">
                             <select id="new-story-category">
                                 {{#each category}}
                                 <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
-                            <label for="new-story-category">Post under</label>
+                            <label for="new-story-category" class=" hide-on-small-only">Post under</label>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="new-story-body" rows="2" class="materialize-textarea"></textarea>
@@ -54,7 +38,8 @@
                         <div class="input-field col s12 right-align">
                             <a for="new-story-body" class="btn-floating waves-effect waves-light teal btn-post"><i
                                     class="material-icons">post_add</i></a>
-                            <a for="new-story-body" class="btn-floating waves-effect waves-light red btn-clear"><i
+                            <a for="new-story-body"
+                                class="btn-floating waves-effect waves-light red lighten-2 btn-clear"><i
                                     class="material-icons">clear</i></a>
                         </div>
                     </div>

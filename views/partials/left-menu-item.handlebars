@@ -1,1 +1,18 @@
-<a class="collection-item waves-effect waves-light" href="#" data-id="{{id}}">{{name}}</a>
+<div class="col s12 l3">
+    <!-- Left Navigation Panel -->
+    <div class="card-panel left-nav-panel" data-selected-category={{selectedCategory}}>
+        <div class="collection">
+            {{#if currentUser}}
+            <div class="collection-item center-align current-user" data-userid="{{currentUser.id}}">
+                <img src="/assets/images/user_avatar.png" alt="user avatar" class="circle responsive-img avatar-img">
+                <div class="title">{{currentUser.name}}</div>
+            </div>
+            {{/if}}
+            <a class="collection-item waves-effect waves-light" href="/" data-id="all">All Stories</a>
+            {{#each category}}
+            <a class="collection-item waves-effect waves-light" href="/?category={{id}}">{{name}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <!-- Left Navigation Panel -->
+</div>
