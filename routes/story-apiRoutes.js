@@ -3,17 +3,18 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 //GET all the stories
-router.get("/api/stories", async function (req, res) {
+router.get("/", async function (req, res) {
   const query = {};
   const dbStory = await db.Story.findAll({
     where: query,
+    order: [["modifiedAt", "DESC"]],
     include: [db.User],
   });
   res.json(dbStory);
 });
 
 //GET all the stories for a Category
-router.get("/api/stories/category/:id", async function (req, res) {
+router.get("/category/:id", async function (req, res) {
   const dbStory = await db.Story.findAll({
     where: {
       CategoryId: req.params.id,
@@ -24,13 +25,13 @@ router.get("/api/stories/category/:id", async function (req, res) {
 });
 
 //POST for saving a new post
-router.post("/api/stories", isAuthenticated, async function (req, res) {
+router.post("/", isAuthenticated, async function (req, res) {
   const dbStory = await db.Story.create(req.body);
   res.json(dbStory);
 });
 
 //PUT for updating posts
-router.put("/api/stories/", isAuthenticated, async function (req, res) {
+router.put("/", isAuthenticated, async function (req, res) {
   const dbStory = await db.Story.update(req.body, {
     where: {
       id: req.body.id,
@@ -40,7 +41,7 @@ router.put("/api/stories/", isAuthenticated, async function (req, res) {
 });
 
 //DELETE posts
-router.delete("/api/stories/:id", isAuthenticated, async function (req, res) {
+router.delete("/:id", isAuthenticated, async function (req, res) {
   const dbStory = await db.Story.destroy({
     where: {
       id: req.params.id,

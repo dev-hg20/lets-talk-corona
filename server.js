@@ -28,9 +28,13 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Configure routes
-app.use(apiUserRoutes);
-app.use(apiStoriesRoutes);
-app.use(htmlRoutes);
+// app.use(apiUserRoutes);
+// app.use(apiStoriesRoutes);
+// app.use(htmlRoutes);
+
+app.use("/api/stories", apiStoriesRoutes);
+app.use("/api", apiUserRoutes);
+app.use("/", htmlRoutes);
 
 // Sync the database and log a message upon success
 db.sequelize.sync({}).then(function () {
