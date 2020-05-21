@@ -17,6 +17,13 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+      },
+    },
   });
 
   //validating the password
