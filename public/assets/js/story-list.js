@@ -101,7 +101,7 @@ $(document).ready(function () {
       const formattedDate = dateCreated.format("ddd, MMMM D");
       const formattedTime = dateCreated.format("h:mm a");
       const setVisibility = story.UserId === currentUserId ? "" : "hide";
-      let storyByUser = (currentPageMode === pageMode.UserProfile) ? "" : ` by ${story.User.name}`;
+      let storyByUser = (currentPageMode === pageMode.UserProfile) ? "" : ` by ${story.User.fullName}`;
       const storyHTML = `
             <div class="card" data-story-id="${story.id}">
                 <div class="story-header row">
