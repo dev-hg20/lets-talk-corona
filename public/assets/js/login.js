@@ -7,33 +7,38 @@ $(document).ready(function () {
   const $passwordInput = $("input#password-input");
   const formTitle = "Sign in";
 
-  // Call API to log the user in - if successful, redirect to the homepage
-  function loginUser(userData) {
-    $.post("/api/login", userData)
-      .then(function () {
-        window.location.replace("/");
-      })
-      .catch(function (error) {
-        if (error.status === 401) {
-          return showMessage("Incorrect user name or password!", formTitle);
-        }
-        handleError(error);
-      });
+  // Call API to log the user in
+  async function loginUser(userData) {
+    return $.ajax({
+      url: "/api/login",
+      method: "POST",
+      data: userData,
+    });
   }
 
-  // Event handler for login form submit - validate user details
-  function submitLoginForm(event) {
-    event.preventDefault();
-    const userData = {
-      name: $usernameInput.val().trim(),
-      password: $passwordInput.val().trim()
-    };
+  // Event handler for login form submit - validate user details and redirect to the homepage
+  async function submitLoginForm(event) {
+    try {
+      event.preventDefault();
+      const userData = {
+        name: $usernameInput.val().trim(),
+        password: $passwordInput.val().trim()
+      };
 
-    if (!userData.name || !userData.password) {
-      return showMessage("Please enter a user name and password!", formTitle);
+      if (!userData.name || !userData.password) {
+        return showMessage("Please enter a user name and password!", formTitle);
+      }
+
+      result = await loginUser(userData);
+      if (result) {
+        window.location.replace("/");
+      }
+    } catch (error) {
+      if (error.status === 401) {
+        return showMessage("Incorrect user name or password!", formTitle);
+      }
+      handleError(error);
     }
-
-    loginUser(userData);
   }
 
   // Event Handlers

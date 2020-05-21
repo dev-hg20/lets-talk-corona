@@ -1,12 +1,9 @@
 <li><a href="/">Home</a></li>
 {{#unless currentUser}}
 <li><a href="/login">Sign in</a></li>
-<li><a
-        href="/signup"
-        class="waves-effect waves-light btn"
-    >Create account</a></li>
+<li><a href="/signup" class="waves-effect waves-light btn">Create account</a></li>
 {{/unless}}
 {{#if currentUser}}
-<li><a href="/">Profile</a></li>
+<li><a href="/profile">Profile</a></li>
 <li><a href="/api/logout">Logout</a></li>
 {{/if}}

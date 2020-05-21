@@ -1,58 +1,9 @@
 {{> left-menu-item}}
 <div class="col s12 l9">
-    <ul class="collapsible">
-        <li>
-            {{#unless currentUser}}
-            <!-- user login message -->
-            <a class="collapsible-header teal-text" href="/login">
-                <i class="material-icons teal-text">double_arrow</i>Please sign in to add a new
-                story !
-            </a>
-            {{/unless}}
-            {{#if currentUser}}
-            <!-- New Story Panel -->
-            <div class="collapsible-header teal-text">
-                <i class="material-icons icon-open-add-story">add</i>
-                <i class="material-icons icon-close-add-story">remove</i>
-                Add a new story ...
-            </div>
-            <div class="collapsible-body new-story-collapsible">
-                <form class="new-story">
-                    <div class="row">
-                        <div class="input-field col s12 m8 inline">
-                            <input id="new-story-title" type="text">
-                            <label for="new-story-title">Title</label>
-                        </div>
-                        <div class="input-field col s12 m4 inline">
-                            <select id="new-story-category">
-                                {{#each category}}
-                                <option value="{{id}}">{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <label for="new-story-category" class=" hide-on-small-only">Post under</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <textarea id="new-story-body" rows="2" class="materialize-textarea"></textarea>
-                            <label for="new-story-body">Story</label>
-                        </div>
-                        <div class="input-field col s12 right-align">
-                            <a for="new-story-body" class="btn-floating waves-effect waves-light teal btn-post"><i
-                                    class="material-icons">post_add</i></a>
-                            <a for="new-story-body"
-                                class="btn-floating waves-effect waves-light red lighten-2 btn-clear"><i
-                                    class="material-icons">clear</i></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- New Story Panel -->
-            {{/if}}
-        </li>
-    </ul>
-    <!-- Story list -->
-    <div class="user-stories">
+    <div class="blue-grey-text left-align hidden selected-category-image">
+        <h4 class="selected-category-title"></h4>
     </div>
-    <!-- Story list -->
+    {{> story-list activePage="homepage" }}
 </div>
 <!-- Link to javascript files used by this module -->
-<script src="/assets/js/homepage.js"></script>
+<script src="/assets/js/story-list.js"></script>

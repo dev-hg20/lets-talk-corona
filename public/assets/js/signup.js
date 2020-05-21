@@ -3,34 +3,47 @@
 
 $(document).ready(function () {
 
-  const $usernameInput = $("input#name-input");
-  const $passwordInput = $("input#password-input");
+  const $usernameInput = $("#name-input");
+  const $fullNameInput = $("#full-name-input");
+  const $passwordInput = $("#password-input");
+  const $passwordConfirmInput = $("#password-confirm-input");
   const formTitle = "Create User Account";
 
-  // Call API to log the user in - if successful, redirect to the homepage
-  function signUpUser(userData) {
-    $.post("/api/signup", userData)
-      .then(function () {
-        window.location.replace("/");
-      })
-      .catch(function (error) {
-        handleError(error);
-      });
+  // Call API to log the user in
+  async function signUpUser(userData) {
+    return $.ajax({
+      url: "/api/signup",
+      method: "POST",
+      data: userData,
+    });
   }
 
-  // Event handler for sign up form submit - validate user details
-  function submitSignupForm(event) {
-    event.preventDefault();
-    const userData = {
-      name: $usernameInput.val().trim(),
-      password: $passwordInput.val().trim()
-    };
+  // Event handler for sign up form submit - create user and redirect to the homepage
+  async function submitSignupForm(event) {
+    try {
+      event.preventDefault();
+      const userData = {
+        name: $usernameInput.val().trim(),
+        password: $passwordInput.val(),
+        fullName: $fullNameInput.val()
+      };
+      const confirmPassword = $passwordConfirmInput.val();
 
-    if (!userData.name || !userData.password) {
-      return showMessage("Please enter a user name and password!", formTitle);
+      if (!userData.name || !userData.fullName || !userData.password) {
+        return showMessage("Please enter your name, user name and password!", formTitle);
+      }
+
+      if (userData.password !== confirmPassword) {
+        return showMessage("Password does not match the confirm password!", formTitle);
+      }
+
+      result = await signUpUser(userData);
+      if (result) {
+        window.location.replace("/");
+      }
+    } catch (error) {
+      handleError(error);
     }
-
-    signUpUser(userData);
   }
 
   // Event Handlers
