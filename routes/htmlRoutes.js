@@ -44,14 +44,30 @@ router.get("/signup", function (request, response) {
 });
 
 // Edit Story route
-router.get("/story/:id", isAuthenticated, async function (request, response) {
+router.get("/story", isAuthenticated, async function (request, response) {
     try {
-        const { params: { id: storyId } } = request;
+        const { query: { id: storyId, callback, category } } = request;
         const pageData = {};
         pageData.category = await fetchCategories();
         pageData.story = await fetchStory(storyId, request.user.id);
+        pageData.callbackPage = callback;
+        pageData.selectedCategory = category;
         pageData.currentUser = request.user;
         return response.render("edit-story", pageData);
+    } catch (error) {
+        console.log(`Error on load page: ${error.stack}`);
+        return response.status(500).send(pageRenderErrorMessage);
+    }
+});
+
+// User Profile route
+router.get("/profile", isAuthenticated, async function (request, response) {
+    try {
+        const pageData = {};
+        pageData.category = await fetchCategories();
+        pageData.currentUser = request.user;
+        pageData.selectedCategory = 0;
+        return response.render("user-profile", pageData);
     } catch (error) {
         console.log(`Error on load page: ${error.stack}`);
         return response.status(500).send(pageRenderErrorMessage);
@@ -65,7 +81,7 @@ router.get("*", async function (request, response) {
         const pageData = {};
         pageData.category = await fetchCategories();
         pageData.currentUser = request.user;
-        pageData.selectedCategory = categoryId;
+        pageData.selectedCategory = (categoryId === null) ? 0 : categoryId;
         return response.render("index", pageData);
     } catch (error) {
         console.log(`Error on load page: ${error.stack}`);

@@ -15,10 +15,11 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 router.post("/signup", function (req, res) {
   db.User.create({
     name: req.body.name,
+    fullName: req.body.fullName,
     password: req.body.password,
   })
     .then(function () {
-      res.redirect(307, "/login");
+      res.redirect(307, "/api/login");
     })
     .catch(function (err) {
       res.status(401).json(err);
@@ -47,7 +48,7 @@ router.get("/user/stories", isAuthenticated, async function (req, res) {
   try {
     const dbStory = await db.Story.findAll({
       where: {
-        UserId: req.params.id,
+        UserId: req.user.id,
       },
       order: [["updatedAt", "DESC"]],
     });

@@ -7,7 +7,16 @@ $(document).ready(function () {
     const $bodyTextarea = $("#edit-story-body");
     const $categorySelect = $("#edit-story-category");
     const formTitle = "Update Story";
-    const currentUserId = $(".current-user").data("userid");
+    const currentUserId = $(".edit-story").data("userid");
+    const currentCallbackPage = $(".edit-story").data("callback-page");
+    const selectedCategoryId = $(".edit-story").data("selected-category");
+
+    // This page can be called from the homepage OR the user-profile page
+    // Callback page refers to the page it needs to redirect to when completed
+    const CallbackPage = {
+        UserProfile: "user-profile",
+        Homepage: "homepage"
+    };
 
     // Call API to update story
     async function updateStory(userData) {
@@ -25,7 +34,22 @@ $(document).ready(function () {
         return false;
     }
 
-    // Event handler for save button click - if successful, redirect to the homepage
+    // Returns the relative path to the current callback page
+    function getCallbackPage() {
+        if (currentCallbackPage === CallbackPage.UserProfile) {
+            // User Profile mode
+            return "/profile";
+        }
+        // return current category
+        if (selectedCategoryId > 0) {
+            // Load by category
+            return `/?category=${selectedCategoryId}`;
+        }
+        // return application homepage
+        return "/";
+    }
+
+    // Event handler for save button click - if successful, redirect to the calling page
     async function saveButtonClick(event) {
         try {
             event.preventDefault();
@@ -45,7 +69,7 @@ $(document).ready(function () {
                 // Display status and wait 2 seconds before redirecting to homepage
                 displayStatus("Story updated!");
                 setTimeout(() => {
-                    window.location.replace("/");
+                    window.location.replace(getCallbackPage());
                 }, 2000);
                 return;
             }
@@ -58,8 +82,14 @@ $(document).ready(function () {
         }
     }
 
+    // Event handler for cancel button click - redirect to the calling page
+    function cancelButtonClick() {
+        window.location.replace(getCallbackPage());
+    }
+
     // Event handlers
     $(".btn-save").on("click", saveButtonClick);
+    $(".btn-cancel").on("click", cancelButtonClick);
 
     // Initialize controls -- load category
     $categorySelect.val($categorySelect.data("selected"));

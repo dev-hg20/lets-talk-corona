@@ -1,0 +1,17 @@
+<div class="col s12">
+    <div class="container">
+        <div class="card">
+            <div class="card-content s12 center-align">
+                <img src="/assets/images/user_avatar.png" alt="user avatar" class="circle responsive-img avatar-img">
+                <div class="title">{{currentUser.fullName}}</div>
+            </div>
+        </div>
+
+        <div class="blue-grey-text left-align hidden user-profile-image">
+            <h4 class="user-profile-title">My Stories</h4>
+        </div>
+        {{> story-list activePage="user-profile"}}
+    </div>
+</div>
+<!-- Link to javascript files used by this module -->
+<script src="/assets/js/story-list.js"></script>

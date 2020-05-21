@@ -61,3 +61,22 @@ font-size: 1.3rem;
 .ltc-btn-primary{
   background-color: slategrey;
 }
+
+.left-nav-panel .collection .collection-item.active {
+  background-color:#78909c;
+}
+
+.user-profile-title,
+.selected-category-title{
+  margin: 0rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  min-height: 5rem;
+  color: white;
+}
+
+.user-profile-image,
+.selected-category-image{
+  background:url(/assets/images/category_title.png) no-repeat 0% 0%;
+  background-size:cover;
+}

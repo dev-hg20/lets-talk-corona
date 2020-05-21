@@ -1,4 +1,7 @@
 // Note: This javascript file references functions from the util.js file
+// It is responsible for displaying the story list and providing the
+// new / remove / edit story functions.
+// It is used by the homepage AND the user-profile page
 
 $(document).ready(function () {
   const $titleInput = $("#new-story-title");
@@ -6,16 +9,35 @@ $(document).ready(function () {
   const $categorySelect = $("#new-story-category");
   const $storyListDiv = $(".user-stories");
   const formTitle = "Add Story";
-  const selectedCategoryId = $(".left-nav-panel").data("selected-category");
-  const currentUserId = $(".current-user").data("userid");
+  const selectedCategoryId = $storyListDiv.data("selected-category");
+  const currentUserId = $storyListDiv.data("userid");
+  const currentPageMode = $storyListDiv.data("page-mode");
 
-  // Call API to get stories from the db based on the current category selection
-  async function getStories() {
-    let queryUrl = "/api/stories/";
-    if (selectedCategoryId !== null && selectedCategoryId !== "") {
-      // Load stories by category
-      queryUrl = `${queryUrl}category/${selectedCategoryId}`;
+  // Page display mode - homepage or the user-profile page
+  const pageMode = {
+    UserProfile: "user-profile",
+    Homepage: "homepage"
+  };
+
+  // Returns the query url for fetching list of stories based on the
+  // page the user is on and the category selected
+  function getStoryListUrl() {
+    if (currentPageMode === pageMode.UserProfile) {
+      // User Profile mode - return user stories
+      return "/api/user/stories/";
     }
+    // Story list is being displayed in the homepage
+    if (selectedCategoryId > 0) {
+      // Load stories by category
+      return `/api/stories/category/${selectedCategoryId}`;
+    }
+    // Load all stories
+    return "/api/stories/";
+  }
+
+  // Call API to get stories from the db based on the current selection
+  async function getStories() {
+    let queryUrl = getStoryListUrl();
     return $.ajax({
       url: queryUrl,
       method: "GET",
@@ -55,7 +77,7 @@ $(document).ready(function () {
     $titleInput.val("");
     $bodyTextarea.val("");
     M.textareaAutoResize($bodyTextarea);
-    if (selectedCategoryId !== null && selectedCategoryId !== "") {
+    if (selectedCategoryId > 0) {
       // Set current category
       $categorySelect.val(selectedCategoryId);
       $categorySelect.prop("disabled", true);
@@ -76,17 +98,19 @@ $(document).ready(function () {
     }
     stories.forEach((story) => {
       const dateCreated = moment(story.createdAt);
-      const formattedDate = dateCreated.format("dddd, MMMM Do YYYY");
-      const setVisibility = story.User.id === currentUserId ? "" : "hide";
+      const formattedDate = dateCreated.format("ddd, MMMM D");
+      const formattedTime = dateCreated.format("h:mm a");
+      const setVisibility = story.UserId === currentUserId ? "" : "hide";
+      let storyByUser = (currentPageMode === pageMode.UserProfile) ? "" : ` by ${story.User.name}`;
       const storyHTML = `
             <div class="card" data-story-id="${story.id}">
                 <div class="story-header row">
                     <div class="col s8 m10">
                         <span class="story-title teal-text">${story.title}</span>
-                        <label>by ${story.User.name} on ${formattedDate}</label>
+                        <label>${storyByUser} on ${formattedDate} at ${formattedTime}</label>
                     </div>
                     <div class="col s4 m2 right-align">
-                        <a class="teal-text edit-story ${setVisibility}" href="/story/${story.id}"><i class="material-icons smaller">edit</i></a>
+                        <a class="teal-text edit-story ${setVisibility}" href="/story?id=${story.id}&callback=${currentPageMode}&category=${selectedCategoryId}"><i class="material-icons smaller">edit</i></a>
                         <a class="red-text delete-story ${setVisibility}" href="#"><i class="material-icons smaller">clear</i></a>
                     </div>
                 </div>
