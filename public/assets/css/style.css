@@ -66,6 +66,7 @@ font-size: 1.3rem;
   background-color:#78909c;
 }
 
+.user-profile-title,
 .selected-category-title{
   margin: 0rem;
   margin-bottom: 1rem;
@@ -74,6 +75,7 @@ font-size: 1.3rem;
   color: white;
 }
 
+.user-profile-image,
 .selected-category-image{
   background:url(/assets/images/category_title.png) no-repeat 0% 0%;
   background-size:cover;

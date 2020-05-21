@@ -6,11 +6,10 @@
                 <div class="title">{{currentUser.fullName}}</div>
             </div>
         </div>
-        <ul class="collapsible">
-            <div class="collapsible-header blue-grey white-text center-align">
-                My Stories
-            </div>
-        </ul>
+
+        <div class="blue-grey-text left-align hidden user-profile-image">
+            <h4 class="user-profile-title">My Stories</h4>
+        </div>
         {{> story-list activePage="user-profile"}}
     </div>
 </div>
