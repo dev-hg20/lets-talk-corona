@@ -11,13 +11,11 @@ $(document).ready(function () {
         $category.addClass('active');
         if ($selectedCategoryTitle) {
             $selectedCategoryTitle.text($category.text());
-            $selectedCategoryTitle.parent().show();
         }
     } else {
         $leftNavigationPanel.find(`.collection-item[data-id='all']`).addClass('active');
         if ($selectedCategoryTitle) {
-            $selectedCategoryTitle.text("");
-            $selectedCategoryTitle.parent().hide();
+            $selectedCategoryTitle.text("View All Stories ...");
         }
     }
 });
