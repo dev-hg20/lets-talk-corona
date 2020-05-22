@@ -69,6 +69,7 @@ font-size: 1.3rem;
 .user-profile-title,
 .selected-category-title{
   margin: 0rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding: 2rem;
   min-height: 5rem;
