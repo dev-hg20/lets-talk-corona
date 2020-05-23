@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.com/dev-hg20/lets-talk-corona.svg?branch=master)](https://travis-ci.com/dev-hg20/lets-talk-corona)
 
 ## Description 
-<br>
 
-![Lets Talk Corona Application](public/assets/images/readme_lets_talk_corona.png "Lets Talk Corona Application")<br><br>
+![Lets Talk Corona Application](public/assets/images/readme_lets_talk_corona.png "Lets Talk Corona Application")<br>
+<br>
 
 Lets Talk Corona is a blogging platform where people come together to share stories and posts about the pandemic. Posting new content is limited to registered users, but anyone who visits the site can view all public posts by our users. Registered users can post new stories and update them.
 
@@ -14,11 +14,13 @@ We have the following broad categories under which users can share their stories
 * Quarantine quotes - funny stories on the new covid rules, quarantine and isolation  
 * Healing space - a space to share your pain, fears and troubles 
 * Newsworthy - facts, news and everything else thats interesting
+<br>
 
- <br>
+*The application is deployed on Heroku at the below link:*
 
-Deployed Application: [Lets Talk Corona](https://lets-talk-corona.herokuapp.com/)
-<br><br>
+[Lets Talk Corona - https://lets-talk-corona.herokuapp.com/](https://lets-talk-corona.herokuapp.com/)
+<br>
+<br>
 
 ## Table of Contents 
 
